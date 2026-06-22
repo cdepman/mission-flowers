@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function(){
+  var KEY='missionflowers.lang';
+  var de=document.documentElement;
+  try{ var s=localStorage.getItem(KEY); if(s==='en'||s==='es') de.setAttribute('data-lang',s); }catch(e){}
+  function set(l){ de.setAttribute('data-lang',l); try{localStorage.setItem(KEY,l);}catch(e){} }
+  function build(){
+    if(document.querySelector('.lang-toggle')) return;
+    var t=document.createElement('div');
+    t.className='lang-toggle lang-toggle--float';
+    t.setAttribute('role','group');
+    t.setAttribute('aria-label','Language / Idioma');
+    t.innerHTML='<button type="button" data-lang-set="en">EN</button><button type="button" data-lang-set="es">ES</button>';
+    Array.prototype.forEach.call(t.querySelectorAll('[data-lang-set]'),function(b){
+      b.addEventListener('click',function(ev){ ev.stopPropagation(); set(b.getAttribute('data-lang-set')); });
+    });
+    document.body.appendChild(t);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',build);
+  else build();
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f1ece1; --panel:#fbf8f1; --ink:#26211b; --ink-soft:#5b5447;
+    --navy:#2f3a5a; --terra:#bf6336; --vine:#6f8a4a; --line:#d8cfba;
+    --type-title:84px; --type-eyebrow:30px; --type-sub:40px; --type-body:32px; --type-small:25px;
+    --pad:100px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+
+  /* --- EN/ES language switch --- */
+  [data-l]{display:none;}
+  html[data-lang="en"] [data-l="en"]{display:contents;}
+  html[data-lang="es"] [data-l="es"]{display:contents;}
+
+  .lang-toggle{display:inline-flex; border:1px solid var(--line); border-radius:99px; overflow:hidden; background:var(--panel); font-family:'Archivo Narrow',sans-serif;}
+  .lang-toggle button{appearance:none; -webkit-appearance:none; border:none; background:transparent; cursor:pointer; font:inherit; font-weight:700; font-size:15px; letter-spacing:0.08em; padding:9px 17px; color:var(--ink-soft); line-height:1;}
+  .lang-toggle button + button{border-left:1px solid var(--line);}
+  html[data-lang="en"] .lang-toggle [data-lang-set="en"],
+  html[data-lang="es"] .lang-toggle [data-lang-set="es"]{background:var(--navy); color:#fff;}
+  .lang-toggle--float{position:fixed; top:18px; right:18px; z-index:2147483000; box-shadow:0 6px 20px rgba(40,33,25,0.18);}
+  @media print{.lang-toggle{display:none !important;}}
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <section data-label="Title" data-screen-label="01" data-speaker-notes="Welcome. This is a concept design for a solar canopy over the 16th and Mission BART plaza, shaped like a daisy. It is a bloom for the Mission — energy, shade, and culture in one structure." style="background:var(--paper); color:var(--ink); font-family:'Archivo Narrow',sans-serif; padding:var(--pad); display:flex; align-items:center; gap:80px; position:relative; overflow:hidden;">
+    <div style="flex:1.15; display:flex; flex-direction:column;">
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:var(--terra); margin-bottom:34px;"><span data-l="en">A project for the community · 16th &amp; Mission</span><span data-l="es">Un proyecto para la comunidad · 16th &amp; Mission</span></div>
+      <h1 style="font-weight:700; font-size:140px; line-height:0.98; letter-spacing:-0.01em; text-transform:uppercase; margin:0; color:var(--navy);">Mission<br>Flowers</h1>
+      <div style="width:120px; height:6px; background:var(--terra); margin:60px 0 40px;"></div>
+      <div style="font-family:'Spectral',serif; font-size:var(--type-sub); color:var(--ink); max-width:760px; line-height:1.35;"><span data-l="en">A solar canopy that brings shade, clean energy, beauty, and cultural identity to the heart of the Mission District.</span><span data-l="es">Una marquesina solar que trae sombra, energía limpia, belleza e identidad cultural al corazón del Distrito de la Misión.</span></div>
+      <div style="margin-top:auto; padding-top:60px; display:flex; gap:48px; font-size:var(--type-small); letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft);">
+        <span><span data-l="en">Concept Design</span><span data-l="es">Diseño Conceptual</span></span><span>05 / 20 / 2024</span><span>San Francisco, CA</span>
+      </div>
+    </div>
+    <div style="flex:0.85; display:flex; align-items:center; justify-content:center;">
+      <div style="width:560px; height:560px; border-radius:50%; overflow:hidden; border:1px solid var(--line); box-shadow:0 18px 50px rgba(40,33,25,0.14); background:var(--panel);">
+        <img src="img/topplan.png" alt="Top plan of the daisy canopy" style="width:100%; height:100%; object-fit:cover; object-position:center;">
+      </div>
+    </div>
+  </section>
+
+  <section data-label="The Opportunity" data-screen-label="02" data-speaker-notes="The plaza at 16th and Mission is one of the busiest transit gateways in the city, but today it offers little shade, comfort, or sense of place. It is an opportunity to do far better for the neighborhood." style="background:var(--paper); color:var(--ink); font-family:'Archivo Narrow',sans-serif; padding:var(--pad); display:flex; flex-direction:column; position:relative;">
+    <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:var(--terra); margin-bottom:18px;"><span data-l="en">The heart of the Mission</span><span data-l="es">El corazón de la Misión</span></div>
+    <h2 style="font-weight:700; font-size:var(--type-title); line-height:1.04; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 14px; color:var(--navy);"><span data-l="en">The Opportunity</span><span data-l="es">La Oportunidad</span></h2>
+    <div style="font-family:'Spectral',serif; font-size:var(--type-body); line-height:1.4; max-width:1150px; color:var(--ink); margin-bottom:64px;"><span data-l="en">One of San Francisco's busiest transit gateways is also one of its most exposed — a hard, sun-baked plaza that thousands pass through every day with little reason to linger.</span><span data-l="es">Una de las entradas de tránsito más concurridas de San Francisco es también una de las más desprotegidas: una plaza dura y abrasada por el sol que miles de personas cruzan cada día sin motivo para quedarse.</span></div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; flex:1;">
+      <div style="background:var(--panel); border:1px solid var(--line); padding:46px 42px; display:flex; flex-direction:column;">
+        <div style="font-size:58px; line-height:1.04; color:var(--terra); font-weight:700;"><span data-l="en">No shade</span><span data-l="es">Sin sombra</span></div>
+        <div style="font-family:'Spectral',serif; font-size:var(--type-small); line-height:1.45; color:var(--ink-soft); margin-top:18px;"><span data-l="en">An open plaza with no protection from sun, heat, or rain for riders and neighbors.</span><span data-l="es">Una plaza abierta sin protección del sol, el calor o la lluvia para pasajeros y vecinos.</span></div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); padding:46px 42px; display:flex; flex-direction:column;">
+        <div style="font-size:58px; line-height:1.04; color:var(--terra); font-weight:700;"><span data-l="en">No identity</span><span data-l="es">Sin identidad</span></div>
+        <div style="font-family:'Spectral',serif; font-size:var(--type-small); line-height:1.45; color:var(--ink-soft); margin-top:18px;"><span data-l="en">A blank civic space that says nothing about the Mission's people, history, or culture.</span><span data-l="es">Un espacio cívico en blanco que no dice nada sobre la gente, la historia o la cultura de la Misión.</span></div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); padding:46px 42px; display:flex; flex-direction:column;">
+        <div style="font-size:58px; line-height:1.04; color:var(--terra); font-weight:700;"><span data-l="en">Nowhere to stay</span><span data-l="es">Sin dónde quedarse</span></div>
+        <div style="font-family:'Spectral',serif; font-size:var(--type-small); line-height:1.45; color:var(--ink-soft); margin-top:18px;"><span data-l="en">Few places to sit, gather, or feel ownership of the heart of the neighborhood.</span><span data-l="es">Pocos lugares para sentarse, reunirse o sentir como propio el corazón del barrio.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="The Vision" data-screen-label="03" data-speaker-notes="The proposal is a daisy. Eight petals of photovoltaic panels open over the BART entry — generating power above while the underside celebrates the Mission below. One structure that is at once infrastructure, shelter, and art." style="background:var(--paper); color:var(--ink); font-family:'Archivo Narrow',sans-serif; padding:70px var(--pad) var(--pad); display:flex; gap:64px; align-items:stretch; position:relative;">
+    <div style="flex:0.92; display:flex; flex-direction:column; justify-content:center;">
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:var(--terra); margin-bottom:18px;"><span data-l="en">A flower for the Mission</span><span data-l="es">Una flor para la Misión</span></div>
+      <h2 style="font-weight:700; font-size:var(--type-title); line-height:1.04; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 28px; color:var(--navy);"><span data-l="en">The Vision</span><span data-l="es">La Visión</span></h2>
+      <div style="font-family:'Spectral',serif; font-size:var(--type-body); line-height:1.42; color:var(--ink); margin-bottom:40px;"><span data-l="en">A daisy in bloom over the BART entrance. Eight petals capture sunlight above; their painted undersides give the plaza color and meaning below.</span><span data-l="es">Una margarita en flor sobre la entrada del BART. Ocho pétalos captan la luz del sol arriba; sus reversos pintados dan color y significado a la plaza abajo.</span></div>
+      <div style="display:flex; flex-direction:column; gap:22px;">
+        <div style="display:flex; align-items:baseline; gap:20px;"><span style="font-size:46px; font-weight:700; color:var(--vine); min-width:120px;">66'</span><span style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft);"><span data-l="en">canopy spread shading the full plaza</span><span data-l="es">de extensión que da sombra a toda la plaza</span></span></div>
+        <div style="display:flex; align-items:baseline; gap:20px;"><span style="font-size:46px; font-weight:700; color:var(--vine); min-width:120px;">26'</span><span style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft);"><span data-l="en">to the top of the petals, branching from steel stems</span><span data-l="es">hasta la punta de los pétalos, ramificándose desde tallos de acero</span></span></div>
+        <div style="display:flex; align-items:baseline; gap:20px;"><span style="font-size:46px; font-weight:700; color:var(--vine); min-width:120px;">8</span><span style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft);"><span data-l="en">petals — each a solar panel above, a mural below</span><span data-l="es">pétalos: cada uno un panel solar arriba y un mural abajo</span></span></div>
+      </div>
+    </div>
+    <div style="flex:1.08; background:var(--panel); border:1px solid var(--line); box-shadow:0 12px 40px rgba(40,33,25,0.1); overflow:hidden;">
+      <img src="img/perspective.png" alt="Perspective view of the canopy over the Mission Street entry" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+    </div>
+  </section>
+
+  <section data-label="Clean Energy" data-screen-label="04" data-speaker-notes="The canopy is working green infrastructure. The petals are solar panels generating clean power. Their edges are gutters that harvest rainwater into a cistern below. And vines cascade from the canopy as a living vertical garden." style="background:var(--paper); color:var(--ink); font-family:'Archivo Narrow',sans-serif; padding:var(--pad); display:flex; flex-direction:column; position:relative;">
+    <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:var(--terra); margin-bottom:18px;"><span data-l="en">Clean energy, living nature</span><span data-l="es">Energía limpia, naturaleza viva</span></div>
+    <h2 style="font-weight:700; font-size:var(--type-title); line-height:1.04; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 56px; color:var(--navy);"><span data-l="en">Clean Energy &amp; Green Infrastructure</span><span data-l="es">Energía Limpia e Infraestructura Verde</span></h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:48px; flex:1;">
+      <div style="display:flex; flex-direction:column; border-top:5px solid var(--navy); padding-top:34px;">
+        <div style="font-size:38px; font-weight:700; text-transform:uppercase; color:var(--navy); margin-bottom:20px;"><span data-l="en">Solar Petals</span><span data-l="es">Pétalos Solares</span></div>
+        <div style="font-family:'Spectral',serif; font-size:var(--type-body); line-height:1.42; color:var(--ink-soft);"><span data-l="en">Photovoltaic panels across the top surface of every petal generate clean, renewable power — including the LED lighting that glows from the petals' undersides at night.</span><span data-l="es">Paneles fotovoltaicos en la superficie superior de cada pétalo generan energía limpia y renovable, incluida la iluminación LED que brilla desde el reverso de los pétalos por la noche.</span></div>
+      </div>
+      <div style="display:flex; flex-direction:column; border-top:5px solid var(--vine); padding-top:34px;">
+        <div style="font-size:38px; font-weight:700; text-transform:uppercase; color:var(--vine); margin-bottom:20px;"><span data-l="en">Rainwater Harvest</span><span data-l="es">Captación de Lluvia</span></div>
+        <div style="font-family:'Spectral',serif; font-size:var(--type-body); line-height:1.42; color:var(--ink-soft);"><span data-l="en">Gutters built into the petal edges channel rain through downspouts to a cistern below the plaza, irrigating the gardens and easing storm runoff.</span><span data-l="es">Canaletas integradas en los bordes de los pétalos conducen la lluvia por bajantes hasta una cisterna bajo la plaza, regando los jardines y reduciendo el escurrimiento pluvial.</span></div>
+      </div>
+      <div style="display:flex; flex-direction:column; border-top:5px solid var(--terra); padding-top:34px;">
+        <div style="font-size:38px; font-weight:700; text-transform:uppercase; color:var(--terra); margin-bottom:20px;"><span data-l="en">Vertical Garden</span><span data-l="es">Jardín Vertical</span></div>
+        <div style="font-family:'Spectral',serif; font-size:var(--type-body); line-height:1.42; color:var(--ink-soft);"><span data-l="en">Planted vines spill down from the canopy on a trellis of steel stems — cooling the microclimate, cleaning the air, and bringing nature into the plaza.</span><span data-l="es">Enredaderas plantadas caen desde la marquesina sobre un enrejado de tallos de acero, refrescando el microclima, limpiando el aire y trayendo naturaleza a la plaza.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Cultural Identity" data-screen-label="05" data-speaker-notes="Turn the daisy over and it becomes a gallery. The underside of each petal is a mural by a local Mission artist — the Virgen de Guadalupe, the mission church, musicians, La Lucha. Each petal tells a story. This is what makes it ours." style="background:var(--paper); color:var(--ink); font-family:'Archivo Narrow',sans-serif; padding:var(--pad); display:flex; gap:72px; align-items:center; position:relative;">
+    <div style="flex:1; display:flex; flex-direction:column;">
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:var(--terra); margin-bottom:18px;"><span data-l="en">Every petal tells a story</span><span data-l="es">Cada pétalo cuenta una historia</span></div>
+      <h2 style="font-weight:700; font-size:var(--type-title); line-height:1.04; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 28px; color:var(--navy);"><span data-l="en">Cultural Identity</span><span data-l="es">Identidad Cultural</span></h2>
+      <div style="font-family:'Spectral',serif; font-size:var(--type-body); line-height:1.42; color:var(--ink); margin-bottom:36px;"><span data-l="en">The underside of every petal is a mural painted by local Mission artists — the Virgen de Guadalupe, the mission church, music, heritage, and La Lucha. Heritage on one face, a story on the other.</span><span data-l="es">El reverso de cada pétalo es un mural pintado por artistas locales de la Misión: la Virgen de Guadalupe, la iglesia de la misión, la música, la herencia y La Lucha. Herencia en una cara, una historia en la otra.</span></div>
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:38px; color:var(--navy); line-height:1.35; border-left:5px solid var(--terra); padding-left:28px;"><span data-l="en">"Art that reflects the Mission's past, present, and future — overhead, in full color, for everyone."</span><span data-l="es">"Arte que refleja el pasado, el presente y el futuro de la Misión: en lo alto, a todo color, para todos."</span></div>
+    </div>
+    <div style="flex:0.92; background:var(--panel); border:1px solid var(--line); box-shadow:0 12px 40px rgba(40,33,25,0.1); padding:30px; display:flex; align-items:center; justify-content:center;">
+      <img src="img/murals.png" alt="Examples of underside petal murals by local artists" style="width:100%; height:auto; object-fit:contain;">
+    </div>
+  </section>
+
+  <section data-label="Public Space" data-screen-label="06" data-speaker-notes="For the people using the plaza every day, this means cool shade, integrated seating among the planters, and a welcoming, well-lit BART entrance that feels safe after dark. A place to pass through becomes a place to be." style="background:var(--paper); color:var(--ink); font-family:'Archivo Narrow',sans-serif; padding:70px var(--pad) var(--pad); display:flex; gap:64px; align-items:stretch; position:relative;">
+    <div style="flex:1.05; background:var(--panel); border:1px solid var(--line); box-shadow:0 12px 40px rgba(40,33,25,0.1); overflow:hidden; display:flex; align-items:center; justify-content:center;">
+      <img src="img/elevation.png" alt="Front elevation on 16th Street" style="width:100%; height:100%; object-fit:cover; object-position:center;">
+    </div>
+    <div style="flex:0.95; display:flex; flex-direction:column; justify-content:center;">
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:var(--terra); margin-bottom:18px;"><span data-l="en">A place to stay</span><span data-l="es">Un lugar para quedarse</span></div>
+      <h2 style="font-weight:700; font-size:var(--type-title); line-height:1.04; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 40px; color:var(--navy);"><span data-l="en">A Better Public Space</span><span data-l="es">Un Mejor Espacio Público</span></h2>
+      <div style="display:flex; flex-direction:column; gap:30px;">
+        <div><div style="font-size:34px; font-weight:700; text-transform:uppercase; color:var(--navy);"><span data-l="en">Shade &amp; Comfort</span><span data-l="es">Sombra y Confort</span></div><div style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft); line-height:1.4; margin-top:8px;"><span data-l="en">Cool cover that improves the plaza's microclimate through the day.</span><span data-l="es">Una cubierta fresca que mejora el microclima de la plaza durante el día.</span></div></div>
+        <div><div style="font-size:34px; font-weight:700; text-transform:uppercase; color:var(--navy);"><span data-l="en">Seating &amp; Gathering</span><span data-l="es">Asientos y Encuentro</span></div><div style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft); line-height:1.4; margin-top:8px;"><span data-l="en">Benches woven into the planters give people room to rest and gather.</span><span data-l="es">Bancas integradas en las jardineras dan espacio para descansar y reunirse.</span></div></div>
+        <div><div style="font-size:34px; font-weight:700; text-transform:uppercase; color:var(--navy);"><span data-l="en">Light &amp; Safety</span><span data-l="es">Luz y Seguridad</span></div><div style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft); line-height:1.4; margin-top:8px;"><span data-l="en">A solar-powered, well-lit entrance that feels open and welcoming at night.</span><span data-l="es">Una entrada bien iluminada con energía solar que se siente abierta y acogedora de noche.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="How It Works" data-screen-label="07" data-speaker-notes="Structurally, steel stems branch like a tree from the plaza to carry the petals. Power and battery storage sit below grade beside the BART concourse, with the rainwater cistern. The petal section shows the layered build — solar above, mural and gutter below." style="background:var(--paper); color:var(--ink); font-family:'Archivo Narrow',sans-serif; padding:70px var(--pad) var(--pad); display:flex; flex-direction:column; position:relative;">
+    <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:var(--terra); margin-bottom:14px;"><span data-l="en">From canopy to cistern</span><span data-l="es">De la cubierta al subsuelo</span></div>
+    <h2 style="font-weight:700; font-size:var(--type-title); line-height:1.04; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 40px; color:var(--navy);"><span data-l="en">How It Works</span><span data-l="es">Cómo Funciona</span></h2>
+    <div style="display:flex; gap:48px; flex:1; align-items:stretch;">
+      <div style="flex:1.25; background:var(--panel); border:1px solid var(--line); box-shadow:0 12px 40px rgba(40,33,25,0.1); overflow:hidden; display:flex; align-items:center; justify-content:center;">
+        <img src="img/section.png" alt="Section through the plaza and BART concourse" style="width:100%; height:100%; object-fit:contain; padding:18px;">
+      </div>
+      <div style="flex:0.85; display:flex; flex-direction:column; gap:26px; justify-content:center;">
+        <div style="display:flex; gap:20px; align-items:flex-start;"><span style="font-size:24px; font-weight:700; color:var(--terra); min-width:34px;">01</span><div><div style="font-size:30px; font-weight:700; text-transform:uppercase; color:var(--navy);"><span data-l="en">Steel Stems</span><span data-l="es">Tallos de Acero</span></div><div style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft); line-height:1.4;"><span data-l="en">Tree-like columns branch up to support each petal.</span><span data-l="es">Columnas como árboles se ramifican hacia arriba para sostener cada pétalo.</span></div></div></div>
+        <div style="display:flex; gap:20px; align-items:flex-start;"><span style="font-size:24px; font-weight:700; color:var(--terra); min-width:34px;">02</span><div><div style="font-size:30px; font-weight:700; text-transform:uppercase; color:var(--navy);"><span data-l="en">Layered Petal</span><span data-l="es">Pétalo en Capas</span></div><div style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft); line-height:1.4;"><span data-l="en">Solar panel and frame above; weather-protected mural and gutter below.</span><span data-l="es">Panel solar y estructura arriba; mural protegido del clima y canaleta abajo.</span></div></div></div>
+        <div style="display:flex; gap:20px; align-items:flex-start;"><span style="font-size:24px; font-weight:700; color:var(--terra); min-width:34px;">03</span><div><div style="font-size:30px; font-weight:700; text-transform:uppercase; color:var(--navy);"><span data-l="en">Below Grade</span><span data-l="es">Bajo Tierra</span></div><div style="font-family:'Spectral',serif; font-size:var(--type-small); color:var(--ink-soft); line-height:1.4;"><span data-l="en">Cistern, power room, and battery storage sit beside the BART concourse.</span><span data-l="es">La cisterna, la sala eléctrica y las baterías se ubican junto al vestíbulo del BART.</span></div></div></div>
+        <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:24px; background:var(--panel);">
+          <img src="img/petaldetail.png" alt="Petal section detail" style="width:100%; height:auto; object-fit:contain;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Project Goals" data-screen-label="08" data-speaker-notes="Five goals in one structure: beautify our public space, generate clean energy, celebrate our culture, support sustainability, and build community pride. From the community, for the community. We ask for your support to bring it to bloom." style="background:var(--navy); color:#f3eee3; font-family:'Archivo Narrow',sans-serif; padding:var(--pad); display:flex; flex-direction:column; justify-content:center; position:relative;">
+    <div style="font-family:'Spectral',serif; font-style:italic; font-size:var(--type-eyebrow); color:#e0a06f; margin-bottom:18px;"><span data-l="en">What it brings to the Mission</span><span data-l="es">Lo que logra para la Misión</span></div>
+    <h2 style="font-weight:700; font-size:var(--type-title); line-height:1.04; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 56px; color:#fff;"><span data-l="en">Project Goals</span><span data-l="es">Objetivos del Proyecto</span></h2>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:34px; margin-bottom:72px;">
+      <div style="border-top:4px solid #e0a06f; padding-top:24px; font-size:30px; font-weight:600; text-transform:uppercase; line-height:1.15;"><span data-l="en">Beautify our public space</span><span data-l="es">Embellecer nuestro espacio público</span></div>
+      <div style="border-top:4px solid #e0a06f; padding-top:24px; font-size:30px; font-weight:600; text-transform:uppercase; line-height:1.15;"><span data-l="en">Generate clean energy</span><span data-l="es">Generar energía limpia</span></div>
+      <div style="border-top:4px solid #e0a06f; padding-top:24px; font-size:30px; font-weight:600; text-transform:uppercase; line-height:1.15;"><span data-l="en">Celebrate our culture</span><span data-l="es">Celebrar nuestra cultura</span></div>
+      <div style="border-top:4px solid #e0a06f; padding-top:24px; font-size:30px; font-weight:600; text-transform:uppercase; line-height:1.15;"><span data-l="en">Support sustainability</span><span data-l="es">Apoyar la sostenibilidad</span></div>
+      <div style="border-top:4px solid #e0a06f; padding-top:24px; font-size:30px; font-weight:600; text-transform:uppercase; line-height:1.15;"><span data-l="en">Build community pride</span><span data-l="es">Fomentar el orgullo comunitario</span></div>
+    </div>
+    <div style="border-top:1px solid rgba(243,238,227,0.25); padding-top:48px; display:flex; align-items:flex-end; justify-content:space-between; gap:60px;">
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:58px; line-height:1.15; color:#fff; max-width:1100px;"><span data-l="en">"From the community, for the community."</span><span data-l="es">"De la comunidad, para la comunidad."</span></div>
+      <div style="font-family:'Archivo Narrow',sans-serif; font-size:var(--type-small); letter-spacing:0.14em; text-transform:uppercase; color:#e0a06f; white-space:nowrap;">— La Misión, San Francisco</div>
+    </div>
+  </section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

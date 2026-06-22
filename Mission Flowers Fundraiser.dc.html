@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f1ece1; --panel:#fbf8f1; --ink:#26211b; --ink-soft:#5b5447;
+    --navy:#2f3a5a; --terra:#bf6336; --terra-soft:#e0a06f; --vine:#6f8a4a; --line:#d8cfba;
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper);}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+  /* --- EN/ES language switch --- */
+  [data-l]{display:none;}
+  html[data-lang="en"] [data-l="en"]{display:contents;}
+  html[data-lang="es"] [data-l="es"]{display:contents;}
+
+  .lang-toggle{display:inline-flex; border:1px solid var(--line); border-radius:99px; overflow:hidden; background:var(--panel); font-family:'Archivo Narrow',sans-serif; flex:none;}
+  .lang-toggle button{appearance:none; -webkit-appearance:none; border:none; background:transparent; cursor:pointer; font:inherit; font-weight:700; font-size:14px; letter-spacing:0.08em; padding:8px 15px; color:var(--ink-soft); line-height:1;}
+  .lang-toggle button + button{border-left:1px solid var(--line);}
+  html[data-lang="en"] .lang-toggle [data-lang-set="en"],
+  html[data-lang="es"] .lang-toggle [data-lang-set="es"]{background:var(--navy); color:#fff;}
+</style>
+</helmet>
+<div style="font-family:'Archivo',sans-serif; color:var(--ink); background:var(--paper); -webkit-font-smoothing:antialiased;">
+
+  <!-- NAV -->
+  <header style="position:sticky; top:0; z-index:50; background:rgba(241,236,225,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:18px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="width:34px; height:34px; border-radius:50%; background:var(--navy); display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><g fill="#e0a06f"><ellipse cx="12" cy="4.3" rx="2.1" ry="3.6"/><ellipse cx="12" cy="19.7" rx="2.1" ry="3.6"/><ellipse cx="4.3" cy="12" rx="3.6" ry="2.1"/><ellipse cx="19.7" cy="12" rx="3.6" ry="2.1"/><ellipse cx="6.5" cy="6.5" rx="2.1" ry="3.6" transform="rotate(45 6.5 6.5)"/><ellipse cx="17.5" cy="17.5" rx="2.1" ry="3.6" transform="rotate(45 17.5 17.5)"/><ellipse cx="17.5" cy="6.5" rx="2.1" ry="3.6" transform="rotate(-45 17.5 6.5)"/><ellipse cx="6.5" cy="17.5" rx="2.1" ry="3.6" transform="rotate(-45 6.5 17.5)"/></g><circle cx="12" cy="12" r="2.6" fill="#fff"/></svg>
+        </div>
+        <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:19px; text-transform:uppercase; letter-spacing:0.04em; color:var(--navy); line-height:1;">Mission Flowers</div>
+      </div>
+      <nav style="display:flex; align-items:center; gap:26px; font-family:'Archivo Narrow',sans-serif; font-size:16px; text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">
+        <a href="#vision" style="color:var(--ink-soft); text-decoration:none;"><span data-l="en">The Vision</span><span data-l="es">La Visión</span></a>
+        <a href="#impact" style="color:var(--ink-soft); text-decoration:none;"><span data-l="en">Impact</span><span data-l="es">Impacto</span></a>
+        <a href="#culture" style="color:var(--ink-soft); text-decoration:none;"><span data-l="en">Culture</span><span data-l="es">Cultura</span></a>
+        <a href="#give" style="background:var(--terra); color:#fff; text-decoration:none; padding:11px 24px; border-radius:2px;"><span data-l="en">Donate</span><span data-l="es">Donar</span></a>
+        <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+          <button type="button" data-lang-set="en" onClick="{{ setEN }}">EN</button>
+          <button type="button" data-lang-set="es" onClick="{{ setES }}">ES</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="max-width:var(--maxw); margin:0 auto; padding:72px 32px 60px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;">
+    <div>
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:21px; color:var(--terra); margin-bottom:20px;"><span data-l="en">A flower for the Mission · 16th &amp; Mission BART Plaza</span><span data-l="es">Una flor para la Misión · Plaza BART de 16th &amp; Mission</span></div>
+      <h1 style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:76px; line-height:0.96; letter-spacing:-0.01em; text-transform:uppercase; margin:0 0 26px; color:var(--navy);"><span data-l="en">Help the Mission<br>Bloom</span><span data-l="es">Ayuda a Florecer<br>la Misión</span></h1>
+      <p style="font-family:'Spectral',serif; font-size:23px; line-height:1.5; color:var(--ink); max-width:560px; margin:0 0 36px;"><span data-l="en">A solar canopy shaped like a daisy — bringing shade, clean energy, and community murals to one of San Francisco's busiest transit gateways. Built by the neighborhood, for the neighborhood.</span><span data-l="es">Una marquesina solar con forma de margarita, que trae sombra, energía limpia y murales comunitarios a una de las entradas de tránsito más concurridas de San Francisco. Construida por el barrio, para el barrio.</span></p>
+      <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+        <a href="#give" style="background:var(--terra); color:#fff; font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:0.04em; text-decoration:none; padding:18px 40px; border-radius:2px;"><span data-l="en">Donate Now</span><span data-l="es">Donar Ahora</span></a>
+        <a href="#vision" style="color:var(--navy); font-family:'Archivo Narrow',sans-serif; font-weight:600; font-size:18px; text-transform:uppercase; letter-spacing:0.04em; text-decoration:none; padding:18px 8px; border-bottom:2px solid var(--navy);"><span data-l="en">See the Plan</span><span data-l="es">Ver el Plan</span></a>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center;">
+      <div style="width:100%; max-width:480px; background:var(--panel); border:1px solid var(--line); box-shadow:0 18px 50px rgba(40,33,25,0.16); overflow:hidden;">
+        <img src="img/perspective.png" alt="Perspective view of the solar daisy canopy over the BART entrance" style="width:100%; display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESS BAR -->
+  <section style="background:var(--navy); color:#f3eee3;">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:44px 32px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; align-items:center;">
+      <div>
+        <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:14px;">
+          <span style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:44px; line-height:1; color:#fff;">{{ raisedFmt }}</span>
+          <span style="font-family:'Spectral',serif; font-size:19px; color:var(--terra-soft);"><span data-l="en">raised of {{ goalFmt }} goal</span><span data-l="es">recaudado de {{ goalFmt }} como meta</span></span>
+        </div>
+        <div style="height:12px; border-radius:99px; background:rgba(243,238,227,0.18); overflow:hidden;">
+          <div style="height:100%; width:{{ pct }}; background:var(--terra-soft); border-radius:99px;"></div>
+        </div>
+      </div>
+      <div style="text-align:center; border-left:1px solid rgba(243,238,227,0.22);">
+        <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:40px; line-height:1; color:#fff;">{{ donorsFmt }}</div>
+        <div style="font-family:'Archivo Narrow',sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--terra-soft); margin-top:8px;"><span data-l="en">Neighbors gave</span><span data-l="es">Vecinos donaron</span></div>
+      </div>
+      <div style="text-align:center; border-left:1px solid rgba(243,238,227,0.22);">
+        <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:40px; line-height:1; color:#fff;">{{ pct }}</div>
+        <div style="font-family:'Archivo Narrow',sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--terra-soft); margin-top:8px;"><span data-l="en">Funded</span><span data-l="es">Financiado</span></div>
+      </div>
+      <div style="text-align:center; border-left:1px solid rgba(243,238,227,0.22);">
+        <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:40px; line-height:1; color:#fff;">{{ daysLeft }}</div>
+        <div style="font-family:'Archivo Narrow',sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--terra-soft); margin-top:8px;"><span data-l="en">Days left</span><span data-l="es">Días restantes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section id="vision" style="max-width:var(--maxw); margin:0 auto; padding:96px 32px; display:grid; grid-template-columns:0.95fr 1.05fr; gap:72px; align-items:center;">
+    <div style="background:var(--panel); border:1px solid var(--line); border-radius:50%; overflow:hidden; box-shadow:0 14px 44px rgba(40,33,25,0.12); aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+      <img src="img/topplan.png" alt="Top plan view of the daisy canopy" style="width:108%; height:108%; object-fit:cover;">
+    </div>
+    <div>
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:20px; color:var(--terra); margin-bottom:14px;"><span data-l="en">The heart of the Mission</span><span data-l="es">El corazón de la Misión</span></div>
+      <h2 style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:54px; line-height:1.02; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 24px; color:var(--navy);"><span data-l="en">A Daisy in Bloom Over BART</span><span data-l="es">Una Margarita en Flor Sobre BART</span></h2>
+      <p style="font-family:'Spectral',serif; font-size:22px; line-height:1.5; color:var(--ink); margin:0 0 38px;"><span data-l="en">Eight petals open above the Mission Street entrance. Their tops capture sunlight; their painted undersides give the plaza color and meaning. Today this gateway offers no shade, no identity, and no reason to linger. We can do better.</span><span data-l="es">Ocho pétalos se abren sobre la entrada de Mission Street. Sus caras superiores captan la luz del sol; sus reversos pintados dan color y significado a la plaza. Hoy esta entrada no ofrece sombra, ni identidad, ni motivo para quedarse. Podemos hacerlo mejor.</span></p>
+      <div style="display:flex; gap:46px;">
+        <div><div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:52px; line-height:1; color:var(--vine);">66'</div><div style="font-family:'Spectral',serif; font-size:17px; color:var(--ink-soft); margin-top:6px;"><span data-l="en">canopy spread</span><span data-l="es">de extensión</span></div></div>
+        <div><div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:52px; line-height:1; color:var(--vine);">26'</div><div style="font-family:'Spectral',serif; font-size:17px; color:var(--ink-soft); margin-top:6px;"><span data-l="en">to petal top</span><span data-l="es">a la punta del pétalo</span></div></div>
+        <div><div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:52px; line-height:1; color:var(--vine);">8</div><div style="font-family:'Spectral',serif; font-size:17px; color:var(--ink-soft); margin-top:6px;"><span data-l="en">solar petals &amp; murals</span><span data-l="es">pétalos solares y murales</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT / CLEAN ENERGY -->
+  <section id="impact" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:88px 32px;">
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:20px; color:var(--terra); margin-bottom:14px; text-align:center;"><span data-l="en">Clean energy, living nature</span><span data-l="es">Energía limpia, naturaleza viva</span></div>
+      <h2 style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:54px; line-height:1.02; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 64px; color:var(--navy); text-align:center;"><span data-l="en">What Your Gift Builds</span><span data-l="es">Lo Que Construye Tu Donación</span></h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:48px;">
+        <div style="border-top:5px solid var(--navy); padding-top:30px;">
+          <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:30px; text-transform:uppercase; color:var(--navy); margin-bottom:16px;"><span data-l="en">Solar Petals</span><span data-l="es">Pétalos Solares</span></div>
+          <p style="font-family:'Spectral',serif; font-size:20px; line-height:1.5; color:var(--ink-soft); margin:0;"><span data-l="en">Photovoltaic panels across every petal generate clean, renewable power — including the LED lighting that glows from below at night.</span><span data-l="es">Paneles fotovoltaicos en cada pétalo generan energía limpia y renovable, incluida la iluminación LED que brilla desde abajo por la noche.</span></p>
+        </div>
+        <div style="border-top:5px solid var(--vine); padding-top:30px;">
+          <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:30px; text-transform:uppercase; color:var(--vine); margin-bottom:16px;"><span data-l="en">Rainwater &amp; Gardens</span><span data-l="es">Lluvia y Jardines</span></div>
+          <p style="font-family:'Spectral',serif; font-size:20px; line-height:1.5; color:var(--ink-soft); margin:0;"><span data-l="en">Gutters in the petal edges harvest rain to a cistern below, feeding vertical gardens of vines that cool the plaza and clean the air.</span><span data-l="es">Canaletas en los bordes de los pétalos captan la lluvia hacia una cisterna, alimentando jardines verticales de enredaderas que refrescan la plaza y limpian el aire.</span></p>
+        </div>
+        <div style="border-top:5px solid var(--terra); padding-top:30px;">
+          <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:30px; text-transform:uppercase; color:var(--terra); margin-bottom:16px;"><span data-l="en">Shade &amp; Safety</span><span data-l="es">Sombra y Seguridad</span></div>
+          <p style="font-family:'Spectral',serif; font-size:20px; line-height:1.5; color:var(--ink-soft); margin:0;"><span data-l="en">Cool cover, seating woven into the planters, and a well-lit entrance turn a place people pass through into a place people stay.</span><span data-l="es">Cubierta fresca, asientos integrados en las jardineras y una entrada bien iluminada convierten un lugar de paso en un lugar para quedarse.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULTURE -->
+  <section id="culture" style="max-width:var(--maxw); margin:0 auto; padding:96px 32px; display:grid; grid-template-columns:1fr 0.92fr; gap:72px; align-items:center;">
+    <div>
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:20px; color:var(--terra); margin-bottom:14px;"><span data-l="en">Every petal tells a story</span><span data-l="es">Cada pétalo cuenta una historia</span></div>
+      <h2 style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:54px; line-height:1.02; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 24px; color:var(--navy);"><span data-l="en">Painted by the Mission</span><span data-l="es">Pintado por la Misión</span></h2>
+      <p style="font-family:'Spectral',serif; font-size:22px; line-height:1.5; color:var(--ink); margin:0 0 32px;"><span data-l="en">The underside of every petal becomes a mural by a local artist — the Virgen de Guadalupe, the mission church, music, heritage, and La Lucha. Heritage on one face, a story on the other, in full color overhead for everyone.</span><span data-l="es">El reverso de cada pétalo se convierte en un mural de un artista local: la Virgen de Guadalupe, la iglesia de la misión, la música, la herencia y La Lucha. Herencia en una cara, una historia en la otra, a todo color en lo alto para todos.</span></p>
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:28px; color:var(--navy); line-height:1.35; border-left:5px solid var(--terra); padding-left:26px;"><span data-l="en">"Art that reflects the Mission's past, present, and future."</span><span data-l="es">"Arte que refleja el pasado, el presente y el futuro de la Misión."</span></div>
+    </div>
+    <div style="background:var(--panel); border:1px solid var(--line); box-shadow:0 14px 44px rgba(40,33,25,0.12); padding:26px;">
+      <img src="img/murals.png" alt="Underside petal mural examples by local Mission artists" style="width:100%; display:block;">
+      <div style="font-family:'Archivo Narrow',sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-soft); text-align:center; margin-top:16px;"><span data-l="en">Art by local Mission artists · each petal tells a story</span><span data-l="es">Arte de artistas locales de la Misión · cada pétalo cuenta una historia</span></div>
+    </div>
+  </section>
+
+  <!-- FULL PLAN -->
+  <section style="background:var(--navy);">
+    <div style="max-width:1340px; margin:0 auto; padding:80px 32px;">
+      <div style="text-align:center; margin-bottom:44px;">
+        <div style="font-family:'Spectral',serif; font-style:italic; font-size:20px; color:var(--terra-soft); margin-bottom:14px;"><span data-l="en">From canopy to cistern</span><span data-l="es">De la cubierta al subsuelo</span></div>
+        <h2 style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:54px; line-height:1.02; text-transform:uppercase; letter-spacing:-0.005em; margin:0; color:#fff;"><span data-l="en">The Whole Concept</span><span data-l="es">El Concepto Completo</span></h2>
+      </div>
+      <div style="background:#fff; border-radius:3px; box-shadow:0 24px 70px rgba(0,0,0,0.4); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+        <img src="img/fullplan.png" alt="Full concept design sheet for the 16th &amp; Mission solar daisy canopy" style="width:100%; display:block;">
+      </div>
+      <div style="font-family:'Spectral',serif; font-size:18px; color:var(--terra-soft); text-align:center; margin-top:24px; font-style:italic;"><span data-l="en">Concept design — plan, elevation, section, and systems. Engineering and community review underway.</span><span data-l="es">Diseño conceptual: planta, alzado, sección y sistemas. Ingeniería y revisión comunitaria en marcha.</span></div>
+    </div>
+  </section>
+
+  <!-- GIVE -->
+  <section id="give" style="max-width:var(--maxw); margin:0 auto; padding:96px 32px;">
+    <div style="text-align:center; margin-bottom:18px;">
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:20px; color:var(--terra); margin-bottom:14px;"><span data-l="en">From the community, for the community</span><span data-l="es">De la comunidad, para la comunidad</span></div>
+      <h2 style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:58px; line-height:1.02; text-transform:uppercase; letter-spacing:-0.005em; margin:0 0 14px; color:var(--navy);"><span data-l="en">Plant a Petal</span><span data-l="es">Planta un Pétalo</span></h2>
+      <p style="font-family:'Spectral',serif; font-size:22px; line-height:1.5; color:var(--ink-soft); max-width:620px; margin:0 auto;"><span data-l="en">Every gift, at every size, helps bring the canopy to bloom. Choose a level — or give what you can.</span><span data-l="es">Cada donación, de cualquier tamaño, ayuda a que la marquesina florezca. Elige un nivel, o da lo que puedas.</span></p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin:52px 0 40px;">
+      <sc-for list="{{ tiers }}" as="tier" hint-placeholder-count="4">
+        <div onClick="{{ tier.select }}" style="{{ tier.cardStyle }}">
+          <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:40px; line-height:1; color:{{ tier.amtColor }};">{{ tier.amount }}</div>
+          <div style="font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:18px; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin:16px 0 10px;">{{ tier.name }}</div>
+          <div style="font-family:'Spectral',serif; font-size:17px; line-height:1.4; color:var(--ink-soft);">{{ tier.perk }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
+      <button onClick="{{ donate }}" style="background:var(--terra); color:#fff; border:none; cursor:pointer; font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:24px; text-transform:uppercase; letter-spacing:0.04em; padding:22px 64px; border-radius:2px; box-shadow:0 10px 28px rgba(191,99,54,0.32);">{{ donateLabel }}</button>
+      <div style="font-family:'Spectral',serif; font-style:italic; font-size:17px; color:var(--ink-soft);"><span data-l="en">Tax-deductible · A project of the Mission Community Plaza Fund (501c3)</span><span data-l="es">Deducible de impuestos · Un proyecto del Mission Community Plaza Fund (501c3)</span></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--ink); color:#d9d2c6;">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:64px 32px 48px;">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:48px; flex-wrap:wrap; border-bottom:1px solid rgba(217,210,198,0.2); padding-bottom:40px;">
+        <div style="font-family:'Spectral',serif; font-style:italic; font-size:40px; line-height:1.2; color:#fff; max-width:680px;"><span data-l="en">"From the community, for the community."</span><span data-l="es">"De la comunidad, para la comunidad."</span></div>
+        <a href="#give" style="background:var(--terra); color:#fff; font-family:'Archivo Narrow',sans-serif; font-weight:700; font-size:18px; text-transform:uppercase; letter-spacing:0.04em; text-decoration:none; padding:16px 38px; border-radius:2px; white-space:nowrap;"><span data-l="en">Donate Now</span><span data-l="es">Donar Ahora</span></a>
+      </div>
+      <div style="display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-top:32px; font-family:'Archivo Narrow',sans-serif; font-size:15px; text-transform:uppercase; letter-spacing:0.08em; color:#9b9384;">
+        <span>Mission Flowers · 16th &amp; Mission BART Plaza</span>
+        <span><span data-l="en">San Francisco, CA · Concept Design</span><span data-l="es">San Francisco, CA · Diseño Conceptual</span></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;raisedAmount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:738500,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:1200000,&quot;step&quot;:1000},&quot;goalAmount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1200000,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:100000,&quot;max&quot;:3000000,&quot;step&quot;:50000},&quot;donorCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2140,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:20000,&quot;step&quot;:10},&quot;daysLeft&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:48,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:365,&quot;step&quot;:1}}">
+class Component extends DCLogic {
+  state = { selected: 1, lang: (() => { try { const s = localStorage.getItem('missionflowers.lang'); return s === 'es' ? 'es' : 'en'; } catch (e) { return 'en'; } })() };
+
+  fmt(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  setLang(lang){
+    try { localStorage.setItem('missionflowers.lang', lang); } catch (e) {}
+    this.setState({ lang });
+  }
+
+  renderVals(){
+    const lang = this.state.lang === 'es' ? 'es' : 'en';
+    // Keep the CSS-driven EN/ES spans in sync with component state.
+    try { document.documentElement.setAttribute('data-lang', lang); } catch (e) {}
+
+    const raised = this.props.raisedAmount ?? 738500;
+    const goal = this.props.goalAmount ?? 1200000;
+    const donors = this.props.donorCount ?? 2140;
+    const daysLeft = this.props.daysLeft ?? 48;
+    const pct = Math.max(0, Math.min(100, Math.round(raised / goal * 100)));
+
+    const tierData = [
+      { amount: '$25', name: { en: 'Friend', es: 'Amigo' }, perk: { en: 'Your name on the community wall at the plaza.', es: 'Tu nombre en el muro comunitario de la plaza.' } },
+      { amount: '$100', name: { en: 'Supporter', es: 'Partidario' }, perk: { en: 'A limited-edition print of the canopy artwork.', es: 'Una lámina de edición limitada del arte de la marquesina.' } },
+      { amount: '$500', name: { en: 'Patron', es: 'Mecenas' }, perk: { en: 'Credited supporter of a petal mural commission.', es: 'Reconocimiento como patrocinador de un mural de pétalo.' } },
+      { amount: '$2,500', name: { en: 'Founder', es: 'Fundador' }, perk: { en: 'A founding plaque set into the plaza.', es: 'Una placa fundacional incrustada en la plaza.' } }
+    ];
+
+    const tiers = tierData.map((t, i) => {
+      const on = i === this.state.selected;
+      return {
+        amount: t.amount,
+        name: t.name[lang],
+        perk: t.perk[lang],
+        amtColor: on ? 'var(--terra)' : 'var(--navy)',
+        select: () => this.setState({ selected: i }),
+        cardStyle: [
+          'cursor:pointer','padding:34px 28px','border-radius:3px',
+          'background:' + (on ? 'var(--panel)' : '#fff'),
+          'border:2px solid ' + (on ? 'var(--terra)' : 'var(--line)'),
+          'box-shadow:' + (on ? '0 14px 34px rgba(191,99,54,0.18)' : '0 4px 14px rgba(40,33,25,0.06)'),
+          'transition:all 0.15s ease','transform:' + (on ? 'translateY(-4px)' : 'none')
+        ].join(';')
+      };
+    });
+
+    return {
+      setEN: () => this.setLang('en'),
+      setES: () => this.setLang('es'),
+      raisedFmt: this.fmt(raised),
+      goalFmt: this.fmt(goal),
+      donorsFmt: donors.toLocaleString('en-US'),
+      daysLeft: String(daysLeft),
+      pct: pct + '%',
+      tiers,
+      donateLabel: (lang === 'es' ? 'Donar ' : 'Donate ') + tierData[this.state.selected].amount,
+      donate: () => { window.alert(lang === 'es'
+        ? '¡Gracias! Esto abriría el formulario de donación seguro para ' + tierData[this.state.selected].amount + '.'
+        : 'Thank you! This would open the secure donation form for ' + tierData[this.state.selected].amount + '.'); }
+    };
+  }
+}
+</script>
+</body>
+</html>

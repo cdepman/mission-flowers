@@ -1,0 +1,12 @@
+# Netlify build configuration — static site, no framework.
+# `build.sh` copies the source decks + runtime into ./site, which is published.
+
+[build]
+  command = "bash build.sh"
+  publish = "site"
+
+# Pretty URL for the pitch deck: /deck -> /deck.html
+[[redirects]]
+  from = "/deck"
+  to = "/deck.html"
+  status = 200
