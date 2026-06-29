@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "serve public --listen 3000",
     "start": "serve public --listen 3000",
-    "deploy": "netlify deploy --prod",
-    "deploy:preview": "netlify deploy"
+    "deploy": "netlify deploy --prod --dir public --no-build",
+    "deploy:preview": "netlify deploy --dir public --no-build"
   },
   "devDependencies": {
     "serve": "^14.2.4"
