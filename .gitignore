@@ -1,16 +1,16 @@
+# Dependencies
+node_modules/
+
 # Local Netlify folder (link state, generated)
 .netlify
-
-# Generated publish directory — produced by build.sh / Netlify build
-site/
 
 # Agent skills & tooling
 .claude/
 skills-lock.json
 
-# Editor / OS artifacts
-.thumbnail
-.DS_Store
-
-# Source planning material not needed by the site
+# Source planning material not served by the site
 uploads/
+
+# OS / editor artifacts
+.DS_Store
+.thumbnail

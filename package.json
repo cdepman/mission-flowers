@@ -1,0 +1,15 @@
+{
+  "name": "mission-flowers",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual (EN/ES) fundraiser site and concept deck for the Mission Flowers solar daisy canopy at 16th & Mission BART, San Francisco.",
+  "scripts": {
+    "dev": "serve public --listen 3000",
+    "start": "serve public --listen 3000",
+    "deploy": "netlify deploy --prod",
+    "deploy:preview": "netlify deploy"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

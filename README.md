@@ -6,36 +6,48 @@ murals by local Mission artists. This repo holds the public-facing site.
 
 **Live:** https://missionflowers.netlify.app
 
-## Contents
+## Pages
 
-| Source file | Published as | What it is |
+| URL | File | What it is |
 | --- | --- | --- |
-| `Mission Flowers Fundraiser.dc.html` | `/` (`index.html`) | Donation landing page |
-| `Mission Flowers.dc.html` | `/deck.html` (`/deck`) | 8-slide concept pitch deck |
+| `/` | `public/index.html` | Donation landing page |
+| `/deck` | `public/deck.html` | 8-slide concept pitch deck |
 
 Both are bilingual with an **EN / ES toggle** (top-right pill on the deck, in the
 nav on the fundraiser). Language preference persists in `localStorage`.
 
-The pages are authored with the `x-dc` deck runtime (`support.js`,
-`deck-stage.js`), which loads React from a CDN at runtime — so the site is fully
-static with no framework build.
+The pages use the `x-dc` deck runtime (`public/vendor/`), which loads React from a
+CDN at runtime — so the site is fully static with nothing to compile.
 
-## Build
-
-`build.sh` assembles the published `site/` directory (gitignored):
+## Develop
 
 ```bash
-bash build.sh
+npm install     # one-time
+npm run dev      # serves public/ at http://localhost:3000
+```
+
+Edit the files in `public/` directly — what you see locally is exactly what ships.
+
+## Project layout
+
+```
+public/            # everything that gets served (the whole site)
+├── index.html     # fundraiser (homepage)
+├── deck.html      # pitch deck
+├── img/           # renders and plan images
+└── vendor/        # x-dc runtime (support.js, deck-stage.js)
+netlify.toml       # publish = "public", no build command
 ```
 
 ## Deploy
 
-Continuous deployment via Netlify is configured in `netlify.toml`
-(`command = "bash build.sh"`, `publish = "site"`). Pushing to the default branch
-triggers a production deploy; pull requests get deploy previews.
+Continuous deployment is configured in `netlify.toml` (publish dir `public`, no
+build). Once the GitHub repo is linked in Netlify, pushing to `main` deploys to
+production and pull requests get preview URLs.
 
 Manual deploy from a local checkout:
 
 ```bash
-netlify deploy --prod   # runs build.sh, publishes site/
+npm run deploy           # production
+npm run deploy:preview   # draft preview URL
 ```
